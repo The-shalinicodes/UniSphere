@@ -1,0 +1,177 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: #006e89;
+}
+
+.josefin-sans-test {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+body {
+    background-color: #0085a1;
+    font-family: "Josefin Sans";
+}
+
+.wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+}
+
+.container {
+    display: flex;
+}
+
+.parts {
+
+    height: 85vh;
+    width: 38vw;
+
+}
+
+.loginpart {
+    background-color: azure;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px;
+}
+
+.logo {
+    align-self: center;
+}
+
+.title {
+    align-self: center;
+    font-size: large;
+    color: #006e89;
+    font-family: "Josefin Sans";
+}
+
+input {
+    border: none;
+    display: block;
+    background-color: transparent;
+    border-bottom: 2px solid black;
+    width: 80%;
+    align-self: center;
+}
+
+input:focus {
+    outline: none;
+}
+
+form {
+    position: absolute;
+    top: 150px;
+    height: auto;
+    width: 90%;
+    align-self: center;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    align-self: flex-start;
+    margin-left: 2.5rem;
+}
+
+span {
+    background-color: #007336;
+    color: white;
+    font-size: 1.1rem;
+    display: flex;
+    align-self: center;
+    box-shadow: 2px 2px 2px black;
+    cursor: not-allowed;
+    user-select: none;
+    padding: 2px;
+}
+
+.cont {
+    display: flex;
+    align-self: center;
+}
+
+button {
+    border-radius: 7px;
+    border: None;
+    color: #006e89;
+    margin-right: 3rem;
+    font-size: 1.1rem;
+    padding: 0.2rem;
+    font-family: 'Josefin Sans';
+    /* box-shadow: 2px 2px 2px black; */
+    position: relative;
+    z-index: 1;
+    padding: 0.3rem;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid #006e89;
+    background-color: transparent;
+}
+
+button:hover {
+    background-color: #006e89;
+    color: azure;
+}
+
+.checkbox label {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 1rem;
+}
+
+pre {
+    font-size: 1rem;
+    font-family: 'Josefin Sans';
+}
+
+.Submit {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.signup {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.checkbox {
+    padding: 10px;
+}
+
+@media screen and (max-width:900px) {
+    .imgpart {
+        display: none;
+    }
+
+    .loginpart {
+        height: 80vh;
+        width: 80vw;
+    }
+
+}

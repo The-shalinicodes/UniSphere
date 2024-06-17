@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .dialog-box {
+        display: none;
+        position: fixed;
+        top: 20px;
+        /* Adjust top position */
+        right: 20px;
+        /* Adjust right position */
+        padding: 20px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        cursor: pointer;
+    }
+
+    p {
+        margin: 0;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Dialog Box for a Particular Time</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div id="dialogBox" class="dialog-box" onload="showDialog()">
+        <span class="close-btn" onclick="closeDialog()">x</span>
+        <p>This is your message.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+<script>
+    // Show the dialog box
+    function showDialog() {
+        var dialogBox = document.getElementById('dialogBox');
+        dialogBox.style.display = 'block';
+
+        // Close the dialog box after 5 seconds (5000 milliseconds)
+        setTimeout(function () {
+            dialogBox.style.display = 'none';
+        }, 5000);
+    }
+
+    // Close the dialog box
+    function closeDialog() {
+        var dialogBox = document.getElementById('dialogBox');
+        dialogBox.style.display = 'none';
+    }
+
+    // Call the showDialog function when the page loads
+    window.onload = function () {
+        showDialog();
+    };
+
+</script>
+
+</html>

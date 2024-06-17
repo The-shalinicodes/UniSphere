@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.tabs {
+    text-align: center;
+}
+
+.tablinks {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.tabcontent {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.tabcontent h2 {
+    margin-top: 0;
+}
