@@ -1,0 +1,113 @@
+body {
+  /* background-image: url("hotel.jpg"); */
+  background-color: #000042;
+  background-size: cover;
+  display: flex;
+  color: white;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 2px 2px 20px black;
+  position: absolute;
+  top: 105px;
+  height: 500px;
+  width: 400px;
+  background-color: rgba(0, 0, 62, 0.5);
+  backdrop-filter: blur(7px);
+}
+
+.logo {
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  height: 80px;
+  text-align: center;
+}
+
+.box {
+  width: 80%;
+  text-align: center;
+}
+
+.inp {
+  width: auto;
+  margin: 30px 0px 35px 0;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: white;
+}
+
+.comm {
+  flex: 1;
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 45px;
+  background: transparent;
+}
+
+.captcha {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 12px;
+}
+
+button {
+  background: #fff;
+  border: none;
+  padding: 10px 20px;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  width: 120px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transform: skew(-21deg);
+}
+
+span {
+  display: inline-block;
+  transform: skew(21deg);
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  left: 0;
+  border-radius: 5px;
+  background-color: rgba(10, 10, 71, 0.5);
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.5s;
+}
+
+button:hover {
+  color: #fff;
+}
+
+button:hover::before {
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is our Together4U Website.">
+    <title>Together4U</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="row h-top">
+                <div class="header-top col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                    <i class="fa fa-envelope"></i><span>pritshah096@gmail.com</span>
+                    <i class="fa fa-phone"></i><span>9427450400</span>
+                </div>
+                <div class="header-top social col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <i class="fa fa-linkedin"></i>
+                </div>
+            </div>
+            <center>
+                <hr class="head-hr">
+            </center>
+            <!-- Computer View -->
+            <div class="row big-view">
+                <nav class="navbar1 nav">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <div class="logo" style="color:rgb(253, 249, 252);"><img src="image/mainlogo1.png"
+                                    alt="Logo" width="154px">
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 center-div">
+                            <div class="menu">
+                                <ul class="nav-links">
+                                    <li class="active"><a href="index.html">Home</a></li>
+                                    <li class="anime2"><a href="about.html">About</a></li>
+                                    <li class="anime2"><a href="services.html">Services</a></li>
+                                    <li class="anime2"><a href="contact.html">Contact Us</a></li>
+                                    <!-- <li class="anime2"><a href="/">Members</a></li> -->
+                                    <li class="login-btn"><a href="login.php">Login</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!-- Mobile View -->
+            <div class="row small-view">
+                <nav class="navbar2 nav">
+                    <div class="logo" style="color:rgb(253, 249, 252);"><img src="image/mainlogo1.png" alt="Logo"
+                            width="154px">
+                    </div>
+                    <div class="menu-btn">
+                        <i class="fa-solid fa-bars" style="margin: 10px;" onclick="openNav()"></i>
+                    </div>
+                </nav>
+            </div>
+            <div id="mySidenav" class="sidenav">
+                <nav class="mob-menu">
+                    <div class="head-mob">
+                        <div class="logo logo-in" style="color:white">
+                            <img src="image/mainlogo1.png" alt="Logo" width="110px">
+                        </div>
+                        <div class="close-btn">
+                            <i class="fa-solid fa-circle-xmark closebtn" onclick="closeNav()"></i>
+                        </div>
+                    </div>
+                    <center>
+                        <hr class="head-hr">
+                    </center>
+                    <ul class="menu-mobile">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <!-- <li><a href="#">Members</a></li> -->
+                    </ul>
+                    <center>
+                        <hr class="head-hr">
+                    </center>
+                    <div class="row">
+                        <div class="header-top social soc-new col-xs-12 col-sm-12">
+                            <i class="fa-brands fa-facebook"></i>
+                            <i class="fa-brands fa-instagram"></i>
+                            <i class="fa-brands fa-x-twitter"></i>
+                            <i class="fa fa-linkedin"></i>
+                        </div>
+                        <div class="header-top login-mob col-xs-12 col-sm-12 pt-3">
+                            <a class="login-btn2" href="login.php">Login</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="car-image.webp" class="w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>First slide label</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="car-image.webp" class="w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Some representative placeholder content for the second slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="car-image.webp" class="w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Third slide label</h5>
+                    <p>Some representative placeholder content for the third slide.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <section class="aboutus">
+        <div class="container pt-4">
+            <div class="row align-items-center text-center">
+                <h3 class="text-custom font-weight-normal">
+                    <div class="anime">About Us</div>
+                </h3>
+            </div>
+            <div class="row align-items-center pb-2">
+                <div class="col-lg-6 col-md-6 order-2 order-md-1 mt-3 mb-4 pt-2 mt-sm-0 opt-sm-0">
+                    <div class="row align-items-center mt-4">
+                        <div class="col-lg-6 col-md-6 col-6">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 pt-2">
+                                    <div class="card work-desk rounded border-0 shadow-lg overflow-hidden">
+                                        <img src="image/p1_1.jpg" class="img-fluid" alt="Image" height="362px" />
+                                        <div class="img-overlay bg-dark"></div>
+                                    </div>
+                                </div>
+                                <!--end col-->
+
+                            </div>
+                            <!--end row-->
+                        </div>
+                        <!--end col-->
+
+                        <div class="col-lg-6 col-md-6 col-6">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="card work-desk rounded border-0 shadow-lg overflow-hidden">
+                                        <img src="image/p1_3.jpg" class="img-fluid" alt="Image" />
+                                        <div class="img-overlay bg-dark"></div>
+                                    </div>
+                                </div>
+                                <!--end col-->
+
+                                <div class="col-lg-12 col-md-12 mt-4 pt-2">
+                                    <div class="card work-desk rounded border-0 shadow-lg overflow-hidden">
+                                        <img src="image/p1_2.jpg" class="img-fluid" alt="Image" />
+                                        <div class="img-overlay bg-dark"></div>
+                                    </div>
+                                </div>
+                                <!--end col-->
+                            </div>
+                            <!--end row-->
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-12 order-1 order-md-2">
+                    <div class="section-title ml-lg-5">
+                        <h5 class="title mb-2">
+                            Lorem ipsum dolor sit <br />
+                            Lorem ipsum dolor sit amet.
+                        </h5>
+                        <p class="text-muted mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit quod debitis
+                            praesentium pariatur temporibus ipsa, cum quidem obcaecati sunt?
+                        </p>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 mt-3 pt-2">
+                                <div class="media align-items-center rounded shadow p-3">
+                                    <i class="fa-solid fa-handshake h4 mb-0 text-custom col-2"></i>
+                                    <span data-purecounter-start="0" data-purecounter-end="10"
+                                        class="purecounter h4 mb-0 text-custom"> 0</span>
+                                    <span class="h4 mb-0 text-custom">+ Sponsors</span>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 mt-3 pt-2">
+                                <div class="media align-items-center rounded shadow p-3">
+                                    <i class="fa-solid fa-people-group h4 mb-0 text-custom col-2"></i>
+                                    <span data-purecounter-start="0" data-purecounter-end="100"
+                                        class="purecounter h4 mb-0 text-custom"> 0</span>
+                                    <span class="h4 mb-0 text-custom">+ Clubs</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 mt-3 pt-2">
+                                <div class="media align-items-center rounded shadow p-3">
+                                    <i class="fa-solid fa-user h4 mb-0 text-custom col-2"></i>
+                                    <span data-purecounter-start="0" data-purecounter-end="2000"
+                                        class="purecounter h4 mb-0 text-custom">0</span>
+                                    <span class="h4 mb-0 text-custom">+ Members</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 mt-3 pt-2">
+                                <div class="media align-items-center rounded shadow">
+                                    <div class="btn btn-info w-100 text-start p-3">
+                                        <a href="about.html" style="color: black;"><i
+                                                class="fa-brands fa-readme h4 mb-0 text-custom col-2"></i><span
+                                                class="h4 mb-0 text-custom">Read More</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <center>
+        <hr class="divide">
+    </center>
+    <section class="service-section section-gap mt-4 mb-4">
+        <div class="container">
+            <div class="section-title text-center mb-30">
+                <h3 class="title-tag">
+                    <div class="anime">Services</div>
+                </h3>
+                <h4 class="title">What We Do</h4>
+            </div>
+            <div class="row service-items">
+                <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.3s"
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                    <div class="service-item color-2 text-center mt-30">
+                        <div class="icon">
+                            <i class="fa fa-laptop-code"></i>
+                        </div>
+                        <h5 class="title"><a href="service-details.html">IT Soluations</a></h5>
+                        <p>Sed ut perspiciatis unde omnis iste natus error volup</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.5s"
+                    style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                    <div class="service-item color-1 text-center mt-30">
+                        <div class="icon">
+                            <i class="fa fa-fingerprint"></i>
+                        </div>
+                        <h5 class="title"><a href="service-details.html">Security System</a></h5>
+                        <p>Sed ut perspiciatis unde omnis iste natus error volup</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.7s"
+                    style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+                    <div class="service-item color-3 text-center mt-30">
+                        <div class="icon">
+                            <i class="fa fa-chalkboard"></i>
+                        </div>
+                        <h5 class="title"><a href="service-details.html">Web Development</a></h5>
+                        <p>Sed ut perspiciatis unde omnis iste natus error volup</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.9s"
+                    style="visibility: visible; animation-delay: 0.9s; animation-name: fadeInUp;">
+                    <div class="service-item color-4 text-center mt-30">
+                        <div class="icon">
+                            <i class="fa fa-database"></i>
+                        </div>
+                        <h5 class="title"><a href="service-details.html">Database Security</a></h5>
+                        <p>Sed ut perspiciatis unde omnis iste natus error volup</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <center>
+        <hr class="divide">
+    </center>
+    <!-- <section class="gallery">
+        <div class="wrapper">
+            <h3 class="galhead text-custom font-weight-normal">
+                <div class="anime">
+                    Gallery
+                </div>
+            </h3>
+            <div class="carousel-gal">
+                <div>
+                    <img src="image/imag1.jpg" height="200px">
+                </div>
+                <div>
+                    <img src="image/imag2.jpg" height="200px">
+                </div>
+                <div>
+                    <img src="image/imag3.jpg" height="200px">
+                </div>
+                <div>
+                    <img src="image/imag4.jpg" height="200px">
+                </div>
+                <div>
+                    <img src="image/imag5.jpg" height="200px">
+                </div>
+                <div>
+                    <img src="image/imag6.jpg" height="200px">
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <center>
+        <hr class="divide">
+    </center>
+    <section class="testi">
+        <div class="testimonials-wrap">
+            <div class="container">
+                <div class="heading-section">
+                    <h3 class="text-custom font-weight-normal">
+                        <div class="anime">Testimonials</div>
+                    </h3>
+                </div>
+                <div class="carousel-testimonial owl-carousel">
+                    <div class="item">
+                        <div class="testimonial-box d-flex">
+                            <div class="text pl-4">
+                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                    Consonantia, there live the blind texts.</p>
+                                <p class="name">Mark Huff</p>
+                                <span class="position">Businesswoman</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial-box d-flex">
+                            <div class="text pl-4">
+                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                    Consonantia, there live the blind texts.</p>
+                                <p class="name">Rodel Golez</p>
+                                <span class="position">Businesswoman</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial-box d-flex">
+                            <div class="text pl-4">
+                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                    Consonantia, there live the blind texts.</p>
+                                <p class="name">Ken Bosh</p>
+                                <span class="position">Businesswoman</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial-box d-flex">
+
+                            <div class="text pl-4">
+                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                    Consonantia, there live the blind texts.</p>
+                                <p class="name">Racky Henderson</p>
+                                <span class="position">Father</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial-box d-flex">
+
+                            <div class="text pl-4">
+                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                    Consonantia, there live the blind texts.</p>
+                                <p class="name">Henry Dee</p>
+                                <span class="position">Businesswoman</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial-box d-flex">
+
+                            <div class="text pl-4">
+                                <span class="quote"><i class="fa fa-quote-left"></i></span>
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
+                                    Consonantia, there live the blind texts.</p>
+                                <p class="name">Mark Huff</p>
+                                <span class="position">Businesswoman</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="foot">
+        <!-- Site footer -->
+        <footer class="site-footer">
+            <div class="top-btn">
+                <a href="#" class="scrollToTop"><i class="fa-solid fa-angle-up"></i></a>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-xs-12">
+                        <h6 class="anime2">About</h6>
+                        <p class="text-justify">Welcome to Together4U, where we're dedicated to fostering connections
+                            and crafting unforgettable moments. Our club management system is designed to bring people
+                            together, streamline organization, and facilitate memorable experiences. With Together4U,
+                            building bonds and creating cherished memories is at the heart of everything we do. Join us
+                            and let's create lasting connections, together.</p>
+                    </div>
+
+                    <div class="col-xs-6 col-md-3 col-sm-6">
+                        <h6 class="anime2">Services</h6>
+                        <ul class="footer-links">
+                            <li><a href="#">C</a></li>
+                            <li><a href="#">UI Design</a></li>
+                            <li><a href="#">PHP</a></li>
+                            <li><a href="#">Java</a></li>
+                            <li><a href="#">Android</a></li>
+                            <li><a href="#">Templates</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-6 col-md-3 col-sm-6">
+                        <h6 class="anime2">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Contribute</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-6 col-xs-12">
+                        <p class="copyright-text">Copyright &copy; 2024 All Rights Reserved by
+                            <a href="#">Together4U</a>.
+                        </p>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <ul class="social-icons">
+                            <li><a class="linksoc facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="linksoc instagram" href="#"><i class="fa-brands fa-instagram"></i></i></a>
+                            </li>
+                            <li><a class="linksoc twitter" href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                            <li><a class="linksoc linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>
+    <script>
+        new PureCounter({
+
+            selector: ".purecounter",
+
+
+            duration: 1,
+
+            once: true,
+            pulse: false,
+            decimals: 0,
+            legacy: true,
+            filesizing: false,
+
+            formater: "us-US",
+            separator: false,
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/ea2578e43f.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+</body>
+
+</html>
