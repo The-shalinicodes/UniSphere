@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID Cards - Club Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="dashboard.html">
+                <i class="fas fa-users me-2"></i>Club Management System
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">
+                            <i class="fas fa-tachometer-alt me-1"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-1"></i> John Doe
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#profileModal">My Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.html">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 sidebar d-md-block">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="members.html">
+                            <i class="fas fa-user-friends"></i> Members
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">
+                            <i class="fas fa-calendar-alt"></i> Events
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="id-cards.html">
+                            <i class="fas fa-id-card"></i> ID Cards
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="announcements.html">
+                            <i class="fas fa-bullhorn"></i> Announcements
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reports.html">
+                            <i class="fas fa-chart-bar"></i> Reports
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="renewals.html">
+                            <i class="fas fa-sync-alt"></i> Renewals
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Main Content Area -->
+            <main class="col-md-9 col-lg-10 content-area">
+                <div class="page-header">
+                    <h2>ID Card Management</h2>
+                    <p class="text-muted">Generate and manage identification cards for club members.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="feature-icon mb-3">
+                                    <i class="fas fa-id-card fa-2x text-primary"></i>
+                                </div>
+                                <h5 class="card-title">Generate New ID Card</h5>
+                                <p class="card-text">Create a new ID card for a club member.</p>
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#generateIdModal">
+                                    <i class="fas fa-plus me-1"></i> Generate ID Card
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="feature-icon mb-3">
+                                    <i class="fas fa-users fa-2x text-primary"></i>
+                                </div>
+                                <h5 class="card-title">Bulk ID Generation</h5>
+                                <p class="card-text">Generate ID cards for multiple members at once.</p>
+                                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#bulkGenerateModal">
+                                    <i class="fas fa-bolt me-1"></i> Bulk Generate
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="feature-icon mb-3">
+                                    <i class="fas fa-palette fa-2x text-primary"></i>
+                                </div>
+                                <h5 class="card-title">ID Card Templates</h5>
+                                <p class="card-text">Manage and customize ID card designs.</p>
+                                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#templatesModal">
+                                    <i class="fas fa-cog me-1"></i> Manage Templates
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Recent ID Cards</h5>
+                    </div>
+                    <div class="card-body" id="idCardsContainer">
+                        <p class="text-center text-muted">No ID cards generated yet</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Generate ID Card Modal -->
+    <div class="modal fade" id="generateIdModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Generate ID Card</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="generateIdForm">
+                        <div class="mb-3">
+                            <label for="selectMember" class="form-label">Select Member *</label>
+                            <select class="form-select" id="selectMember" required>
+                                <option value="">Choose a member...</option>
+                                <!-- Members will be loaded here -->
+                            </select>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="idExpiryDate" class="form-label">Expiry Date</label>
+                                <input type="date" class="form-control" id="idExpiryDate">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="idTemplate" class="form-label">Card Template</label>
+                                <select class="form-select" id="idTemplate">
+                                    <option value="standard">Standard</option>
+                                    <option value="premium">Premium</option>
+                                    <option value="vip">VIP</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="idNotes" class="form-label">Additional Notes</label>
+                            <textarea class="form-control" id="idNotes" rows="2"></textarea>
+                        </div>
+                    </form>
+                    
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h6 class="mb-0">Preview</h6>
+                        </div>
+                        <div class="card-body text-center">
+                            <div id="idCardPreview" class="id-card mx-auto">
+                                <div class="id-card-header">
+                                    <h4>CLUB MEMBERSHIP</h4>
+                                    <p class="text-muted">Member ID: #CM2023001</p>
+                                </div>
+                                <img src="https://i.pravatar.cc/120" class="id-card-photo" alt="Member Photo">
+                                <div class="text-center mb-3">
+                                    <h5 id="previewName">Member Name</h5>
+                                    <p class="text-muted" id="previewType">Member Type</p>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-6">
+                                        <p class="mb-1"><strong>Valid Until</strong></p>
+                                        <p id="previewExpiry">Dec 31, 2023</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p class="mb-1"><strong>Status</strong></p>
+                                        <p><span class="badge bg-success">Active</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="generateIdBtn">Generate ID Card</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bulk Generate Modal -->
+    <div class="modal fade" id="bulkGenerateModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bulk ID Card Generation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Generate ID cards for multiple members at once. Select the members you want to generate cards for:</p>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Select Members</label>
+                        <div id="bulkMembersList" class="border rounded p-3" style="max-height: 200px; overflow-y: auto;">
+                            <!-- Members list will be loaded here -->
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="bulkTemplate" class="form-label">Card Template</label>
+                        <select class="form-select" id="bulkTemplate">
+                            <option value="standard">Standard</option>
+                            <option value="premium">Premium</option>
+                            <option value="vip">VIP</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="bulkGenerateBtn">Generate All</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Templates Modal -->
+    <div class="modal fade" id="templatesModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">ID Card Templates</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card template-card">
+                                <div class="card-body text-center">
+                                    <div class="id-card template-standard mx-auto mb-3">
+                                        <div class="id-card-header bg-primary text-white">
+                                            <h4>CLUB MEMBERSHIP</h4>
+                                            <p>Member ID: #CM2023001</p>
+                                        </div>
+                                        <div class="p-3">
+                                            <div class="text-center mb-3">
+                                                <h5>John Doe</h5>
+                                                <p>Standard Member</p>
+                                            </div>
+                                            <div class="row text-center">
+                                                <div class="col-12">
+                                                    <p><strong>Valid Until:</strong> Dec 31, 2023</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6>Standard Template</h6>
+                                    <button class="btn btn-sm btn-outline-primary mt-2">Select</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card template-card">
+                                <div class="card-body text-center">
+                                    <div class="id-card template-premium mx-auto mb-3">
+                                        <div class="id-card-header bg-gradient-premium text-white">
+                                            <h4>CLUB MEMBERSHIP</h4>
+                                            <p>Member ID: #CM2023001</p>
+                                        </div>
+                                        <div class="p-3">
+                                            <div class="text-center mb-3">
+                                                <h5>John Doe</h5>
+                                                <p>Premium Member</p>
+                                            </div>
+                                            <div class="row text-center">
+                                                <div class="col-12">
+                                                    <p><strong>Valid Until:</strong> Dec 31, 2023</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6>Premium Template</h6>
+                                    <button class="btn btn-sm btn-outline-primary mt-2">Select</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card template-card">
+                                <div class="card-body text-center">
+                                    <div class="id-card template-vip mx-auto mb-3">
+                                        <div class="id-card-header bg-gradient-vip text-white">
+                                            <h4>CLUB MEMBERSHIP</h4>
+                                            <p>Member ID: #CM2023001</p>
+                                        </div>
+                                        <div class="p-3">
+                                            <div class="text-center mb-3">
+                                                <h5>John Doe</h5>
+                                                <p>VIP Member</p>
+                                            </div>
+                                            <div class="row text-center">
+                                                <div class="col-12">
+                                                    <p><strong>Valid Until:</strong> Dec 31, 2023</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6>VIP Template</h6>
+                                    <button class="btn btn-sm btn-outline-primary mt-2">Select</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="modal fade" id="profileModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">My Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <img src="https://i.pravatar.cc/100" class="rounded-circle" alt="Profile Picture">
+                        <h4 class="mt-2">John Doe</h4>
+                        <p class="text-muted">Administrator</p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" value="john.doe@example.com" readonly>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Phone</label>
+                        <input type="text" class="form-control" value="(555) 123-4567">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Role</label>
+                        <input type="text" class="form-control" value="Club Administrator" readonly>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Load ID cards when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadIdCards();
+            loadMembersForIdCards();
+            
+            // Generate ID card form submission
+            document.getElementById('generateIdBtn').addEventListener('click', function() {
+                generateIdCard();
+            });
+            
+            // Update preview when member is selected
+            document.getElementById('selectMember').addEventListener('change', function() {
+                updateIdCardPreview();
+            });
+            
+            // Update preview when expiry date changes
+            document.getElementById('idExpiryDate').addEventListener('change', function() {
+                updateIdCardPreview();
+            });
+        });
+        
+        function loadIdCards() {
+            const idCards = JSON.parse(localStorage.getItem('idCards')) || [];
+            const idCardsContainer = document.getElementById('idCardsContainer');
+            
+            if (idCards.length === 0) {
+                idCardsContainer.innerHTML = '<p class="text-center text-muted">No ID cards generated yet</p>';
+                return;
+            }
+            
+            let cardsHTML = '<div class="row">';
+            
+            idCards.forEach((card, index) => {
+                const member = getMemberById(card.memberId);
+                if (!member) return;
+                
+                const expiryDate = new Date(card.expiryDate);
+                const now = new Date();
+                const isExpired = expiryDate < now;
+                const statusClass = isExpired ? 'bg-danger' : 'bg-success';
+                const statusText = isExpired ? 'Expired' : 'Active';
+                
+                cardsHTML += `
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="id-card ${card.template}">
+                            <div class="id-card-header">
+                                <h4>CLUB MEMBERSHIP</h4>
+                                <p class="text-muted">Member ID: #CM${card.memberId.toString().padStart(4, '0')}</p>
+                            </div>
+                            <img src="https://i.pravatar.cc/120?img=${index + 10}" class="id-card-photo" alt="Member Photo">
+                            <div class="text-center mb-3">
+                                <h5>${member.name}</h5>
+                                <p class="text-muted">${member.type} Member</p>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col-6">
+                                    <p class="mb-1"><strong>Valid Until</strong></p>
+                                    <p>${expiryDate.toLocaleDateString()}</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="mb-1"><strong>Status</strong></p>
+                                    <p><span class="badge ${statusClass}">${statusText}</span></p>
+                                </div>
+                            </div>
+                            <div class="text-center mt-3">
+                                <button class="btn btn-sm btn-outline-primary me-1" onclick="printIdCard(${index})">Print</button>
+                                <button class="btn btn-sm btn-outline-secondary me-1" onclick="downloadIdCard(${index})">Download</button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="deleteIdCard(${index})">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cardsHTML += '</div>';
+            idCardsContainer.innerHTML = cardsHTML;
+        }
+        
+        function loadMembersForIdCards() {
+            const members = JSON.parse(localStorage.getItem('members')) || [];
+            const selectMember = document.getElementById('selectMember');
+            const bulkMembersList = document.getElementById('bulkMembersList');
+            
+            // Clear existing options
+            selectMember.innerHTML = '<option value="">Choose a member...</option>';
+            bulkMembersList.innerHTML = '';
+            
+            if (members.length === 0) {
+                selectMember.innerHTML += '<option value="" disabled>No members available</option>';
+                bulkMembersList.innerHTML = '<p class="text-muted">No members available</p>';
+                return;
+            }
+            
+            members.forEach(member => {
+                // Add to select dropdown
+                const option = document.createElement('option');
+                option.value = member.id;
+                option.textContent = `${member.name} (${member.type})`;
+                selectMember.appendChild(option);
+                
+                // Add to bulk generation list
+                const checkbox = document.createElement('div');
+                checkbox.className = 'form-check';
+                checkbox.innerHTML = `
+                    <input class="form-check-input" type="checkbox" value="${member.id}" id="member-${member.id}">
+                    <label class="form-check-label" for="member-${member.id}">
+                        ${member.name} (${member.type})
+                    </label>
+                `;
+                bulkMembersList.appendChild(checkbox);
+            });
+        }
+        
+        function getMemberById(id) {
+            const members = JSON.parse(localStorage.getItem('members')) || [];
+            return members.find(member => member.id === id);
+        }
+        
+        function updateIdCardPreview() {
+            const memberId = document.getElementById('selectMember').value;
+            const expiryDate = document.getElementById('idExpiryDate').value;
+            const template = document.getElementById('idTemplate').value;
+            
+            const member = getMemberById(parseInt(memberId));
+            
+            if (member) {
+                document.getElementById('previewName').textContent = member.name;
+                document.getElementById('previewType').textContent = `${member.type} Member`;
+            }
+            
+            if (expiryDate) {
+                const date = new Date(expiryDate);
+                document.getElementById('previewExpiry').textContent = date.toLocaleDateString();
+            }
+            
+            // Update template class
+            const previewCard = document.getElementById('idCardPreview');
+            previewCard.className = 'id-card ' + template + ' mx-auto';
+        }
+        
+        function generateIdCard() {
+            const memberId = document.getElementById('selectMember').value;
+            const expiryDate = document.getElementById('idExpiryDate').value;
+            const template = document.getElementById('idTemplate').value;
+            const notes = document.getElementById('idNotes').value;
+            
+            if (!memberId) {
+                alert('Please select a member');
+                return;
+            }
+            
+            const idCards = JSON.parse(localStorage.getItem('idCards')) || [];
+            const newIdCard = {
+                id: Date.now(),
+                memberId: parseInt(memberId),
+                expiryDate: expiryDate || new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
+                template,
+                notes,
+                generatedAt: new Date().toISOString()
+            };
+            
+            idCards.push(newIdCard);
+            localStorage.setItem('idCards', JSON.stringify(idCards));
+            
+            // Close modal and reset form
+            document.getElementById('generateIdForm').reset();
+            bootstrap.Modal.getInstance(document.getElementById('generateIdModal')).hide();
+            
+            // Reload ID cards
+            loadIdCards();
+            
+            // Show success message
+            alert('ID card generated successfully!');
+        }
+        
+        function printIdCard(index) {
+            alert('Print functionality would be implemented here for ID card #' + index);
+        }
+        
+        function downloadIdCard(index) {
+            alert('Download functionality would be implemented here for ID card #' + index);
+        }
+        
+        function deleteIdCard(index) {
+            if (confirm('Are you sure you want to delete this ID card?')) {
+                const idCards = JSON.parse(localStorage.getItem('idCards')) || [];
+                idCards.splice(index, 1);
+                localStorage.setItem('idCards', JSON.stringify(idCards));
+                loadIdCards();
+                alert('ID card deleted successfully!');
+            }
+        }
+    </script>
+</body>
+</html>
