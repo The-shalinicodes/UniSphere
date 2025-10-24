@@ -338,7 +338,7 @@
             const status = document.getElementById('eventStatus').value;
             
             if (!title || !date || !time) {
-                alert('Please fill in all required fields');
+                showAlert('Please fill in all required fields');
                 return;
             }
             
@@ -367,22 +367,24 @@
             loadEvents();
             
             // Show success message
-            alert('Event created successfully!');
+            showAlert('Event created successfully!');
         }
         
         function editEvent(index) {
             // Implementation for editing events
-            alert('Edit event functionality would be implemented here');
+            showAlert('Edit event functionality would be implemented here');
         }
         
         function deleteEvent(index) {
-            if (confirm('Are you sure you want to delete this event?')) {
-                const events = JSON.parse(localStorage.getItem('events')) || [];
-                events.splice(index, 1);
-                localStorage.setItem('events', JSON.stringify(events));
-                loadEvents();
-                alert('Event deleted successfully!');
-            }
+            showConfirm('Are you sure you want to delete this event?').then(function(confirmed){
+                if (confirmed) {
+                    const events = JSON.parse(localStorage.getItem('events')) || [];
+                    events.splice(index, 1);
+                    localStorage.setItem('events', JSON.stringify(events));
+                    loadEvents();
+                    showAlert('Event deleted successfully!');
+                }
+            });
         }
     </script>
 </body>

@@ -454,7 +454,7 @@
             const member = members.find(m => m.id === memberId);
             
             if (!member) {
-                alert('Member not found');
+                showAlert('Member not found');
                 return;
             }
             
@@ -478,7 +478,7 @@
             // Find member
             const memberIndex = members.findIndex(m => m.id === memberId);
             if (memberIndex === -1) {
-                alert('Member not found');
+                showAlert('Member not found');
                 return;
             }
             
@@ -517,7 +517,7 @@
             loadRenewals();
             
             // Show success message
-            alert('Membership renewed successfully!');
+            showAlert('Membership renewed successfully!');
         }
         
         function viewRenewalHistory(memberId) {
@@ -525,7 +525,7 @@
             const memberRenewals = renewals.filter(r => r.memberId === memberId);
             
             if (memberRenewals.length === 0) {
-                alert('No renewal history found for this member');
+                showAlert('No renewal history found for this member');
                 return;
             }
             
@@ -548,11 +548,11 @@
             });
             historyHTML += '</ul>';
             
-            // Show history in a modal or alert
-            alert('Renewal history for this member would be displayed here:\n\n' + 
-                  memberRenewals.map(r => 
-                    `${new Date(r.renewalDate).toLocaleDateString()} - ${r.type} (${r.status})`
-                  ).join('\n'));
+                        // Show history in a modal or alert
+                        showAlert('Renewal history for this member would be displayed here:\n\n' + 
+                                    memberRenewals.map(r => 
+                                        `${new Date(r.renewalDate).toLocaleDateString()} - ${r.type} (${r.status})`
+                                    ).join('\n'));
         }
         
         function sendReminders() {
@@ -560,7 +560,7 @@
             const message = document.getElementById('reminderMessage').value;
             
             // In a real application, this would send emails to members
-            alert(`Renewal reminders sent to members with ${reminderType} expiry!`);
+            showAlert(`Renewal reminders sent to members with ${reminderType} expiry!`);
             
             // Close modal
             bootstrap.Modal.getInstance(document.getElementById('sendRemindersModal')).hide();

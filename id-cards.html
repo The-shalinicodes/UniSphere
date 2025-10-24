@@ -540,7 +540,7 @@
             const notes = document.getElementById('idNotes').value;
             
             if (!memberId) {
-                alert('Please select a member');
+                showAlert('Please select a member');
                 return;
             }
             
@@ -565,25 +565,27 @@
             loadIdCards();
             
             // Show success message
-            alert('ID card generated successfully!');
+            showAlert('ID card generated successfully!');
         }
         
         function printIdCard(index) {
-            alert('Print functionality would be implemented here for ID card #' + index);
+            showAlert('Print functionality would be implemented here for ID card #' + index);
         }
         
         function downloadIdCard(index) {
-            alert('Download functionality would be implemented here for ID card #' + index);
+            showAlert('Download functionality would be implemented here for ID card #' + index);
         }
         
         function deleteIdCard(index) {
-            if (confirm('Are you sure you want to delete this ID card?')) {
-                const idCards = JSON.parse(localStorage.getItem('idCards')) || [];
-                idCards.splice(index, 1);
-                localStorage.setItem('idCards', JSON.stringify(idCards));
-                loadIdCards();
-                alert('ID card deleted successfully!');
-            }
+            showConfirm('Are you sure you want to delete this ID card?').then(function(confirmed){
+                if (confirmed) {
+                    const idCards = JSON.parse(localStorage.getItem('idCards')) || [];
+                    idCards.splice(index, 1);
+                    localStorage.setItem('idCards', JSON.stringify(idCards));
+                    loadIdCards();
+                    showAlert('ID card deleted successfully!');
+                }
+            });
         }
     </script>
 </body>
