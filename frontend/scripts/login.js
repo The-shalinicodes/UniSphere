@@ -40,36 +40,36 @@ function validationForm() {
   var regpswd = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&()]).{8,}$/;
 
   if (email == "") {
-    window.alert("Enter your E-mail address!");
+    showAlert("Enter your E-mail address!");
     document.Login.email.focus();
     generate();
     return false;
   } else if (!regemail.test(email)) {
-    window.alert("Please enter the email again!");
+    showAlert("Please enter the email again!");
     document.Login.email.focus();
     generate();
     return false;
   }
 
   if (password == "") {
-    window.alert("Please enter the password!");
+    showAlert("Please enter the password!");
     document.Login.password.focus();
     generate();
     return false;
   } else if (!regpswd.test(password)) {
-    window.alert("Please enter the password again in the correct format!");
+    showAlert("Please enter the password again in the correct format!");
     document.Login.password.focus();
     generate();
     return false;
   }
 
   if (usr_inp == "") {
-    window.alert("Please enter the Captcha!");
+    showAlert("Please enter the Captcha!");
     document.Login.captcha.focus();
     generate();
     return false;
   } else if (usr_inp != captcha.innerHTML) {
-    window.alert("Incorrect Captcha!");
+    showAlert("Incorrect Captcha!");
     document.Login.captcha.focus();
     generate();
     return false;

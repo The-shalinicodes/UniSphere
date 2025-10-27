@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var announcementInput = document.getElementById('announcement');
         var announcement = announcementInput.value;
 
-        alert('Announcement made!');
+        showAlert('Announcement made!');
         announcementInput.value = '';
     });
 });

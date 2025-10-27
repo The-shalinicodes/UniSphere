@@ -34,13 +34,25 @@
 
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="signupPassword" class="form-label">Password *</label>
-                                    <input type="password" id="signupPassword" class="form-control" required minlength="8"
-                                        pattern="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Minimum 8 characters, include upper and lower case and a number">
+                                        <label for="signupPassword" class="form-label">Password *</label>
+                                        <div class="input-group">
+                                            <input type="password" id="signupPassword" class="form-control" required minlength="8"
+                                                pattern="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Minimum 8 characters, include upper and lower case and a number" aria-describedby="toggleSignupPass">
+                                            <button class="btn btn-outline-secondary" type="button" id="toggleSignupPass" aria-label="Toggle password visibility"><i class="fa fa-eye"></i></button>
+                                        </div>
+                                        <div class="mt-2">
+                                            <div class="progress" style="height:8px;">
+                                                <div id="signupPasswordStrength" class="progress-bar" role="progressbar" style="width:0%"></div>
+                                            </div>
+                                            <small class="form-text text-muted">Use 8+ chars, mix letters, numbers & symbols.</small>
+                                        </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="signupConfirm" class="form-label">Confirm Password *</label>
-                                    <input type="password" id="signupConfirm" class="form-control" required minlength="8">
+                                    <div class="input-group">
+                                        <input type="password" id="signupConfirm" class="form-control" required minlength="8" aria-describedby="toggleSignupConfirm">
+                                        <button class="btn btn-outline-secondary" type="button" id="toggleSignupConfirm" aria-label="Toggle confirm password visibility"><i class="fa fa-eye"></i></button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -94,6 +106,44 @@
 
         document.addEventListener('DOMContentLoaded', function(){
             setSignupDobLimits();
+            // Password toggle and strength
+            const signupPass = document.getElementById('signupPassword');
+            const signupConfirm = document.getElementById('signupConfirm');
+            const toggleSignupPass = document.getElementById('toggleSignupPass');
+            const toggleSignupConfirm = document.getElementById('toggleSignupConfirm');
+            const signupStrengthBar = document.getElementById('signupPasswordStrength');
+
+            toggleSignupPass.addEventListener('click', function(){
+                const type = signupPass.getAttribute('type') === 'password' ? 'text' : 'password';
+                signupPass.setAttribute('type', type);
+                this.querySelector('i').classList.toggle('fa-eye');
+                this.querySelector('i').classList.toggle('fa-eye-slash');
+            });
+            toggleSignupConfirm.addEventListener('click', function(){
+                const type = signupConfirm.getAttribute('type') === 'password' ? 'text' : 'password';
+                signupConfirm.setAttribute('type', type);
+                this.querySelector('i').classList.toggle('fa-eye');
+                this.querySelector('i').classList.toggle('fa-eye-slash');
+            });
+
+            function evaluateStrength(pw){
+                let score = 0;
+                if (!pw) return 0;
+                if (pw.length >= 8) score += 1;
+                if (/[A-Z]/.test(pw)) score += 1;
+                if (/[0-9]/.test(pw)) score += 1;
+                if (/[^A-Za-z0-9]/.test(pw)) score += 1;
+                return score;
+            }
+            signupPass.addEventListener('input', function(){
+                const score = evaluateStrength(this.value);
+                const pct = (score / 4) * 100;
+                signupStrengthBar.style.width = pct + '%';
+                signupStrengthBar.classList.remove('bg-danger','bg-warning','bg-success');
+                if (score <= 1) signupStrengthBar.classList.add('bg-danger');
+                else if (score === 2 || score === 3) signupStrengthBar.classList.add('bg-warning');
+                else signupStrengthBar.classList.add('bg-success');
+            });
             const form = document.getElementById('signupForm');
             form.addEventListener('submit', async function(e){
                 e.preventDefault();
