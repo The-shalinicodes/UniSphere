@@ -182,8 +182,11 @@
                 users.push(newUser);
                 localStorage.setItem('users', JSON.stringify(users));
 
-                await showAlert('Account created successfully! You can now sign in.');
-                window.location.href = 'index.html';
+                // Set currentUser so the user is signed in immediately
+                localStorage.setItem('currentUser', JSON.stringify(newUser));
+
+                await showAlert('Account created successfully! You are now signed in. Redirecting to your dashboard...');
+                window.location.href = 'dashboard.html';
             });
         });
     </script>
