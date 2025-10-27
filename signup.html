@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Club Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-page">
+    <canvas id="networkCanvas" aria-hidden="true"></canvas>
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center min-vh-100">
+            <div class="col-md-6 col-lg-5">
+                <div class="login-card card shadow">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <i class="fas fa-user-plus fa-3x text-primary mb-2"></i>
+                            <h3 class="card-title">Create an Account</h3>
+                            <p class="text-muted">Join the club — fill the form to register</p>
+                        </div>
+
+                        <form id="signupForm" novalidate>
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">Full Name *</label>
+                                <input type="text" id="fullName" class="form-control" required maxlength="100">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="signupEmail" class="form-label">Email *</label>
+                                <input type="email" id="signupEmail" class="form-control" required maxlength="150">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="signupPassword" class="form-label">Password *</label>
+                                    <input type="password" id="signupPassword" class="form-control" required minlength="8"
+                                        pattern="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Minimum 8 characters, include upper and lower case and a number">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="signupConfirm" class="form-label">Confirm Password *</label>
+                                    <input type="password" id="signupConfirm" class="form-control" required minlength="8">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="signupPhone" class="form-label">Phone</label>
+                                    <input type="tel" id="signupPhone" class="form-control" pattern="^\\+?[0-9\\s\\-]{7,20}$" maxlength="20">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="signupDob" class="form-label">Date of Birth *</label>
+                                    <input type="date" id="signupDob" class="form-control" required>
+                                    <div class="form-text">You must be at least 13 years old to register</div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="signupType" class="form-label">Membership Type</label>
+                                <select id="signupType" class="form-select">
+                                    <option value="Basic">Basic</option>
+                                    <option value="Standard">Standard</option>
+                                    <option value="Premium">Premium</option>
+                                </select>
+                            </div>
+
+                            <div class="d-grid mb-2">
+                                <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+                            </div>
+
+                            <div class="text-center">
+                                <small class="text-muted">Already registered? <a href="index.html">Sign in</a></small>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // DOB constraints (13-100 years)
+        function setSignupDobLimits(){
+            const dob = document.getElementById('signupDob');
+            const today = new Date();
+            const max = new Date(today.getFullYear() - 13, today.getMonth(), today.getDate());
+            const min = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate());
+            dob.max = max.toISOString().split('T')[0];
+            dob.min = min.toISOString().split('T')[0];
+        }
+
+        document.addEventListener('DOMContentLoaded', function(){
+            setSignupDobLimits();
+            const form = document.getElementById('signupForm');
+            form.addEventListener('submit', async function(e){
+                e.preventDefault();
+                // gather
+                const name = document.getElementById('fullName').value.trim();
+                const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+                const pass = document.getElementById('signupPassword').value;
+                const confirm = document.getElementById('signupConfirm').value;
+                const phone = document.getElementById('signupPhone').value.trim();
+                const dob = document.getElementById('signupDob').value;
+                const type = document.getElementById('signupType').value;
+
+                if (!name || !email || !pass || !confirm || !dob) {
+                    return showAlert('Please fill in all required fields');
+                }
+                if (pass !== confirm) return showAlert('Passwords do not match');
+                const passRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+                if (!passRegex.test(pass)) return showAlert('Password must be minimum 8 characters and include upper/lower case letters and a number');
+
+                // age check
+                const age = (function(){
+                    const d = new Date(dob); const now = new Date();
+                    let a = now.getFullYear() - d.getFullYear();
+                    const m = now.getMonth() - d.getMonth();
+                    if (m < 0 || (m === 0 && now.getDate() < d.getDate())) a--; return a;
+                })();
+                if (age < 13) return showAlert('You must be at least 13 years old to register');
+
+                // store in localStorage (demo)
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                if (users.find(u => u.email === email)) return showAlert('An account with that email already exists');
+
+                // simple encoding for demo (not secure) — in production send to server and hash securely
+                const encodedPass = btoa(pass);
+                const newUser = { id: Date.now(), name, email, password: encodedPass, phone, dob, type, createdAt: new Date().toISOString() };
+                users.push(newUser);
+                localStorage.setItem('users', JSON.stringify(users));
+
+                await showAlert('Account created successfully! You can now sign in.');
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>

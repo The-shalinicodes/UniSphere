@@ -170,7 +170,8 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="memberPhone" class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control" id="memberPhone">
+                                <input type="tel" class="form-control" id="memberPhone" placeholder="+1234567890"
+                                    pattern="^\+?[0-9\s\-]{7,20}$" title="Please enter a valid phone number" maxlength="20">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="memberType" class="form-label">Membership Type *</label>
@@ -204,6 +205,11 @@
                             <label for="memberNotes" class="form-label">Notes</label>
                             <textarea class="form-control" id="memberNotes" rows="3"></textarea>
                         </div>
+                        <div class="mb-3">
+                            <label for="memberDob" class="form-label">Date of Birth *</label>
+                            <input type="date" class="form-control" id="memberDob" required>
+                            <div class="form-text">Select date of birth (age must be 13+)</div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -228,11 +234,11 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="editMemberName" class="form-label">Full Name *</label>
-                                <input type="text" class="form-control" id="editMemberName" required>
+                                <input type="text" class="form-control" id="editMemberName" required maxlength="100">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="editMemberEmail" class="form-label">Email Address *</label>
-                                <input type="email" class="form-control" id="editMemberEmail" required>
+                                <input type="email" class="form-control" id="editMemberEmail" required maxlength="150">
                             </div>
                         </div>
                         
@@ -271,6 +277,11 @@
                         <div class="mb-3">
                             <label for="editMemberNotes" class="form-label">Notes</label>
                             <textarea class="form-control" id="editMemberNotes" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMemberDob" class="form-label">Date of Birth *</label>
+                            <input type="date" class="form-control" id="editMemberDob" required>
+                            <div class="form-text">Select date of birth (age must be 13+)</div>
                         </div>
                     </form>
                 </div>
@@ -347,6 +358,18 @@
                     searchMembers();
                 }
             });
+
+            // Set DOB constraints (age between 13 and 100)
+            function setDobLimits() {
+                const dobInputs = [document.getElementById('memberDob'), document.getElementById('editMemberDob')];
+                const today = new Date();
+                const maxDate = new Date(today.getFullYear() - 13, today.getMonth(), today.getDate());
+                const minDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate());
+                const maxStr = maxDate.toISOString().split('T')[0];
+                const minStr = minDate.toISOString().split('T')[0];
+                dobInputs.forEach(inp => { if (inp) { inp.max = maxStr; inp.min = minStr; } });
+            }
+            setDobLimits();
         });
         
         function loadMembers() {
@@ -403,6 +426,7 @@
             const phone = document.getElementById('memberPhone').value;
             const type = document.getElementById('memberType').value;
             const joinDate = document.getElementById('joinDate').value || new Date().toISOString().split('T')[0];
+            const dob = document.getElementById('memberDob').value;
             const status = document.getElementById('memberStatus').value;
             const notes = document.getElementById('memberNotes').value;
             
@@ -419,6 +443,7 @@
                 phone,
                 type,
                 joinDate,
+                dob,
                 status,
                 notes
             };
@@ -461,6 +486,7 @@
             const phone = document.getElementById('editMemberPhone').value;
             const type = document.getElementById('editMemberType').value;
             const joinDate = document.getElementById('editJoinDate').value;
+            const dob = document.getElementById('editMemberDob').value;
             const status = document.getElementById('editMemberStatus').value;
             const notes = document.getElementById('editMemberNotes').value;
             
@@ -477,6 +503,7 @@
                 phone,
                 type,
                 joinDate,
+                dob,
                 status,
                 notes
             };
